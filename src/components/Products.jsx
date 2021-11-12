@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Products.css'
 import {currency} from '../utils'
+import {Link} from 'react-router-dom'
 
 export default class Products extends Component {
 
@@ -11,19 +12,18 @@ export default class Products extends Component {
 
                     {this.props.products.map(product => (
 
-                        <article key={product._id} className="product">
+                        <Link to={'/products/' + product._id} key={product._id} className="product">
 
-                            <a href={'#' + product._id}>
-                                <img src={product.image} alt={product.title} />
-                                <p>{product.title}</p>
-                            </a>
-                            
+                            <img src={product.image} alt={product.title} />
+
+                            <p className="description">{product.title}</p>
+
                             <div className="product-price">
                                 <div>{`${currency(product.price)}`}</div>
                                 <button className="button primary">Add to Cart</button>
                             </div>
 
-                        </article>
+                        </Link>
                     ))}
 
                 </div>

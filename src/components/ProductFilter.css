@@ -1,0 +1,23 @@
+.filter{
+    display: flex;
+    padding: 1rem;
+    margin: 1rem;    
+    gap: 50px;
+    justify-content: center;
+    border-bottom: .1rem solid #c0c0c0;
+}
+
+.filter-results{
+
+
+}
+
+.filter-size{
+
+
+}
+
+.filter-sort{
+
+
+}

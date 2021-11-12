@@ -36,6 +36,12 @@
     max-height: 37rem; 
 }
 
+.product .description{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
 .product-price{
     display: grid;
     justify-content: center;
