@@ -1,7 +1,8 @@
 import './Cart.css'
 import React, { Component } from 'react'
-import CartItem from './CartItem'
+import CartItems from './CartItems'
 import { currency } from '../utils'
+
 
 export default class Cart extends Component {
 
@@ -46,13 +47,10 @@ export default class Cart extends Component {
                     {cartItems.length > 0 && <div>You have {cartItems.length} in cart</div>}
                 </div>
 
-                <ul className="cart">
-                    {cartItems.map(item => (
+          
 
-                        <CartItem key={item._id} item={item} removeFromCart={this.props.removeFromCart}/>
-                    
-                    ))}
-                </ul>
+                <CartItems cartItems={cartItems} removeFromCart={this.props.removeFromCart}/>
+                
 
                 {cartItems.length > 0 && (<>
                     <div className="total">
