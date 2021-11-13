@@ -5,6 +5,7 @@ import Products from "./components/Products";
 import data from './data/data.json'
 import Footer from './components/Footer';
 import ProductFilter from './components/ProductFilter';
+import Cart from './components/Cart';
 
 
 class App extends Component {
@@ -15,16 +16,17 @@ class App extends Component {
     this.state= {
       products: data.products,
       size: '',
-      sort: ''
+      sort: '',
+      cartItems: []
     }
   }
+
 
 
   handleSortChange = (e) => {
     
       const _sort = e.target.value
 
-      // hello
       this.setState({
         sort: e.target.value,
         products: this.state.products.slice().sort((a, b) => {
@@ -63,7 +65,34 @@ class App extends Component {
 
   }
 
+  addToCart = (product) => {
 
+    const cartItems = this.state.cartItems.slice() // slice creates and returns new state rather than a reference to old state
+
+    let alreadyInCart = false
+    
+    cartItems.forEach(item => {
+
+      if(item._id === product._id){
+        
+        item.count++
+        alreadyInCart = true
+      }   
+    })
+
+    if(!alreadyInCart) cartItems.push({...product, count: 1})
+
+    this.setState({cartItems})
+  }
+
+  removeFromCart = (item) => {
+
+    const cartItems = this.state.cartItems.slice()
+
+    this.setState({
+      cartItems: cartItems.filter(it => it._id !== item._id)  
+    })
+  }
 
   render(){
       return (<>
@@ -79,16 +108,15 @@ class App extends Component {
                 size={this.state.size} 
                 sort={this.state.sort}
                 handleSizeChange={this.handleSizeChange}
-                handleSortChange={this.handleSortChange}
-                
+                handleSortChange={this.handleSortChange}                
             />
 
 
-            <Products products={this.state.products}/>
+            <Products products={this.state.products} addToCart={this.addToCart}/>
           </div>
 
           <div className="sidebar">
-            
+            <Cart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} />
           </div>
         </div>
 
