@@ -44,10 +44,45 @@
 
 .btn-checkout{
     margin: 5px;
-    padding: 2px 10px; 
+    padding: 6px 18px; 
+    background-color: orangered;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 
+/* form */
+.checkout-form{
+    margin-top: 20px;
+    width: 100%;
+}
 
+/* ul */
+.checkout-form .container{ 
+    width: 100%;
+    list-style: none;
+}
 
+/* li */
+.checkout-form .form-group{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
 
+.checkout-form .form-control{
+    padding: 1rem;
+    border: 0.1rem solid #c0c0c0;
+}
+
+.checkout-form .btn-submit{
+    margin: 1rem 0 0 1rem;
+    padding: 6px 12px;
+    background-color: orangered;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
